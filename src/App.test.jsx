@@ -9,7 +9,7 @@ describe('App', () => {
     // loading message
     screen.getByText(/loading/i);
 
-    // load 10 films per page
+    // loads film --- 10 films per page
     const film = await screen.findByAltText('film');
 
     expect(film).toBeInTheDocument();
