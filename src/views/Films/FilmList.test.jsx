@@ -21,7 +21,7 @@ describe('Film List', () => {
 
     // result returned
     return waitFor(() => {
-      const result = screen.getAllByAltText('film');
+      const result = screen.getAllByRole('listitem');
       expect(result.length).toEqual(1);
       expect(result[0].textContent).toEqual('Castle in the Sky');
     })

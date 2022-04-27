@@ -9,9 +9,16 @@ export default function FilmList() {
   const [results, setResults] = useState([]);
 
   // event: search .filter
+  const filmList = search.length ? results : films;
+
   const handleSearch = (e) => {
     setSearch(e.target.value);
-  }
+    const filteredFilms = films.filter((film) => film.title
+      .toLowerCase()
+      .includes(e.target.value.toLowerCase().trim())
+    );
+    setResults(filteredFilms);
+  };
 
   // useEffect: fetch api, setData, map (id, img, title)
   useEffect(() => {
@@ -46,7 +53,7 @@ export default function FilmList() {
             {films.map((film) => {
               return <li>
                 <img src={film.image} alt='film cover'/>
-                {film.title}
+                <h3>{film.title}</h3>
               </li>;
             })}
           </ul>
