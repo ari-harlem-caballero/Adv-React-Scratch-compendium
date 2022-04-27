@@ -1,5 +1,6 @@
 // check search functions, loading
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import FilmList from './FilmList';
 
 describe('Film List', () => {
@@ -7,10 +8,22 @@ describe('Film List', () => {
     render(<FilmList />)
 
     // loading
-    // find film
-    // find search bar
-    // search for film
-    // result returned
+    screen.getByText(/loading/i);
 
+    // find film
+    await screen.findByText('Castle in the Sky');
+
+    // find search bar
+    const search = screen.getByPlaceholderText('Search for a film');
+
+    // search for film
+    userEvent.type(search, 'castle');
+
+    // result returned
+    return waitFor(() => {
+      const result = screen.getAllByAltText('film');
+      expect(result.length).toEqual(1);
+      expect(result[0].textContent).toEqual('Castle in the Sky');
+    })
   })
 })
