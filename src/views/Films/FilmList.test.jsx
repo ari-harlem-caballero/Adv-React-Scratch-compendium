@@ -4,8 +4,14 @@ import userEvent from '@testing-library/user-event';
 import FilmList from './FilmList';
 
 describe('Film List', () => {
+  const film = {
+    title: 'Castle in the Sky',
+    release_date: 1986,
+    imageURL: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg'
+  };
+
   it('should render a list of films and filter through them', async () => {
-    render(<FilmList />)
+    render(<FilmList film={film} />)
 
     // loading
     screen.getByText(/loading/i);
