@@ -19,11 +19,13 @@ export default function FilmList() {
         image: film.image,
         title: `${film.title} (${film.release_date})`
       }))
-      console.log(filmInfo);
+      
+      setFilms(filmInfo);
+      setLoading(false);
     };
 
     fetchFilms();
-  })
+  }, []);
   // return html, search bar, mapped list
   return (
     <>
@@ -32,7 +34,10 @@ export default function FilmList() {
       ) : (
         <ul>
           {films.map((film) => {
-            return <li>{film.title}</li>;
+            return <li>
+              <img src={film.image} alt='film cover'/>
+              {film.title}
+            </li>;
           })}
         </ul>
       )}
