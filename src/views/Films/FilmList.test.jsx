@@ -11,7 +11,7 @@ describe('Film List', () => {
     screen.getByText(/loading/i);
 
     // find film
-    await screen.findByText('Castle in the Sky');
+    await screen.findByText('Castle in the Sky (1986)');
 
     // find search bar
     const search = screen.getByPlaceholderText('Search for a film');

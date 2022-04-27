@@ -9,6 +9,10 @@ export default function FilmList() {
   const [results, setResults] = useState([]);
 
   // event: search .filter
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  }
+
   // useEffect: fetch api, setData, map (id, img, title)
   useEffect(() => {
     const fetchFilms = async () => {
@@ -32,14 +36,21 @@ export default function FilmList() {
       {loading ? (
         <p>page loading...</p>
       ) : (
-        <ul>
-          {films.map((film) => {
-            return <li>
-              <img src={film.image} alt='film cover'/>
-              {film.title}
-            </li>;
-          })}
-        </ul>
+        <>
+          <input 
+            placeholder="Search for a film" 
+            value={search}
+            onChange={handleSearch}
+          />
+          <ul>
+            {films.map((film) => {
+              return <li>
+                <img src={film.image} alt='film cover'/>
+                {film.title}
+              </li>;
+            })}
+          </ul>
+        </>
       )}
     </>
   )
