@@ -14,8 +14,12 @@ export default function FilmList() {
     const fetchFilms = async () => {
       const res = await fetch('https://ghibliapi.herokuapp.com/films');
       const json = await res.json();
-
-      console.log(json);
+      const filmInfo = json.map((film) => ({
+        id: film.id,
+        image: film.image,
+        title: `${film.title} (${film.release_date})`
+      }))
+      console.log(filmInfo);
     };
 
     fetchFilms();
