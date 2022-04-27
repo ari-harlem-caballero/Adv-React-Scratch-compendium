@@ -10,6 +10,16 @@ export default function FilmList() {
 
   // event: search .filter
   // useEffect: fetch api, setData, map (id, img, title)
+  useEffect(() => {
+    const fetchFilms = async () => {
+      const res = await fetch('https://ghibliapi.herokuapp.com/films');
+      const json = await res.json();
+
+      console.log(json);
+    };
+
+    fetchFilms();
+  })
   // return html, search bar, mapped list
   return (
     <>
