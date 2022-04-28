@@ -10,7 +10,7 @@ describe('App', () => {
     screen.getByText(/loading/i);
 
     // loads film --- 10 films per page
-    const film = await screen.findByAltText('film');
+    const film = await screen.findByText(/list/i);
 
     expect(film).toBeInTheDocument();
   })

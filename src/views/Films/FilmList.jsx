@@ -9,6 +9,8 @@ export default function FilmList() {
   const [results, setResults] = useState([]);
 
   // event: search .filter
+  const isSearching = !!search.length;
+  
   const filmList = search.length ? results : films;
 
   const handleSearch = (e) => {
